@@ -43,3 +43,13 @@
 |ML|Custom Vision|3.3|
 |Web|Flask|2.0.1|
 
+<br>
+
+# Directories
+
+|디렉토리명|소개|
+|:---|:---|
+|Web|Flask 기반 웹 개발 코드|
+|Custom_vision.ipynb|커스텀 비전 학습 코드|
+|scraping.ipynb|이미지 스크레이핑 코드|
+|StreamingSpark.scala|Spark shell에서 사용한 spark streaming용 scala 코드|
