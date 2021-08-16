@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="eighty">
+<p><font size="2">찾고싶은 제품을 키워드로 찾아보세요</font><br/><font size="2" color="gray">#제품명#브랜드#종류</font></p>
+<p><form action="searchresult" method="post">
+    <table class="searchtable">
+        <tbody>
+            <tr>
+                <th><input class="searchbar" type="text" name="searchbar" placeholder="검색어를 입력하세요"></th>
+                <th width=10%><input width="25px" class="icon_btn" type="image" src = "/static/icon_3.png" name="submit" value="submit"></th>
+            </tr>
+        </tbody>
+    </table>
+</form></p>
+</div>
+{% block content2 %}{% endblock %}
+{% endblock %}

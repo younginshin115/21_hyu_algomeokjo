@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form action="rangeselect" method="post" enctype="multipart/form-data">
+	<ul class="nav nav-pills">
+		<li class="nav-item left-tab2">
+			<div class="radio_btn">
+				<label class="box-radio-input"><input type="radio" name="cp_item" value="ASC"><span>높은순</span></label>
+				<label class="box-radio-input"><input type="radio" name="cp_item" value="DESC"><span>낮은순</span></label>
+			</div>
+		</li>
+		<li class="nav-item right-tab2">
+			<div class="drop_down">
+				<select name="categories">
+					<option value="protein">단백질</option>
+					<option value="carbohydrate">탄수화물</option>
+					<option value="fat">지방</option>
+				</select>
+			</div>
+		</li>
+	</ul>
+	<br/><br/><div class="description" align="left"><font size="2">삼대 영양소를 기준으로 제품을 찾아보세요<br/>메뉴에서 영양소와 정렬 기준을 선택한 뒤 범위를 설정해보세요</font></div><br/><br/>
+	<div class="middle">
+		<div class="multi-range-slider">
+			<input name="rangeleft" type="range" id="input-left" min="1" max="300" step="1" value="75" onchange="leftrangevalue.value=value"/>
+			<input name="rangeright" type="range" id="input-right" min="1" max="300" step="1" value="225" onchange="rightrangevalue.value=value"/>
+			<div class="slider">
+				<div class="track"></div>
+				<div class="range"></div>
+				<div class="thumb left"></div>
+				<div class="thumb right"></div>
+			</div>
+		</div>
+	</div>
+	<div class="slider_num">
+		<ul class="nav nav-pills">
+			<li class="nav-item left-tab3"><output id="leftrangevalue">75</output></li>
+			<li class="nav-item right-tab3"><output id="rightrangevalue">225</output></li>
+		</ul>
+	</div>
+	<br/><br/>
+<center>
+<input class="img_btn3" type="submit" value="검색" align="center" name="rangeselect">
+</center>
+</form>
+<script>
+var inputLeft = document.getElementById("input-left");
+var inputRight = document.getElementById("input-right");
+
+var thumbLeft = document.querySelector(".slider > .thumb.left");
+var thumbRight = document.querySelector(".slider > .thumb.right");
+var range = document.querySelector(".slider > .range");
+
+function setLeftValue() {
+	var _this = inputLeft,
+		min = parseInt(_this.min),
+		max = parseInt(_this.max);
+
+	_this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+	var percent = ((_this.value - min) / (max - min)) * 100;
+
+	thumbLeft.style.left = percent + "%";
+	range.style.left = percent + "%";
+}
+setLeftValue();
+
+function setRightValue() {
+	var _this = inputRight,
+		min = parseInt(_this.min),
+		max = parseInt(_this.max);
+
+	_this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+	var percent = ((_this.value - min) / (max - min)) * 100;
+
+	thumbRight.style.right = (100 - percent) + "%";
+	range.style.right = (100 - percent) + "%";
+}
+setRightValue();
+
+inputLeft.addEventListener("input", setLeftValue);
+inputRight.addEventListener("input", setRightValue);
+
+</script>
+
+{% endblock %}

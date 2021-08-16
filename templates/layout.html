@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniPjt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_css.css') }}">
+
+</head>
+<body>
+    <div class="header" align="center">
+        <ul class="nav nav-pills">
+            <li class="nav-item left-tab"><a href="/" ><img width="25px" class="icon_btn" src = "/static/icon_1.png"/></a></li>
+            <li class="nav-item center-tab"><a href="/" ><img width="150px" class="icon_btn" src = "/static/logo.png"/></li>
+            <li class="nav-item right-tab"><a href="/"><img width="25px" class="icon_btn" src = "/static/icon_2.png"/></a></li>
+        </ul>
+    </div>
+
+    <div class="content container">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer" align="center">
+        <br/>
+        <font color="gray">copyrightⓒ 2021 All rights reserved by 알고먹조</font>
+    </div>
+</body>
+</html>

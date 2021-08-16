@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form action="uploadfile" method="post" enctype="multipart/form-data">
+    <label for="input_file">
+    <div id="image_container" align="center"><img class="img_btn1" src="/static/img_1.png"/></div>
+    </label>
+    <p align="center">
+    <input class="img_btn2" type="submit" value="검색">
+    <input id="input_file" type="file" name="select" style="display:none" onchange="setThumbnail(event)"/> <br/></p>
+</form>
+
+<script src="/static/js/html2canvas.js"></script>
+<script>
+
+
+function setThumbnail(event) {
+var reader = new FileReader();
+var tempImg = document.querySelector(".img_btn1")
+reader.onload = function(event) {
+tempImg.setAttribute("src", "/static/img_2.png");};
+reader.readAsDataURL(event.target.files[0]); }
+
+
+</script>
+
+{% endblock %}
